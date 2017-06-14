@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Angular Exercise by Venkat</title>
+    <style>
+      .select-box {
+        width: 35px;
+        background: grey;
+        padding: 10px;
+      }
+      .table-striped {
+        margin-bottom: 10px;
+        width: 25%;
+        min-width: 250px;
+      }
+      .confirm-btn {
+        background-color: #76cdd3;
+        border: 1px solid #76cdd3;
+        padding: 5px 15px;
+        color: #000;
+       
+      }
+    </style>
+    <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+          />
+
+    <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-app="UsersApp">
+    <div ng-controller="UsersCtrl">
+      <label ng-if="total_items> 0">
+        {{total_items}} of {{users.length}} selected
+      </label>
+
+      <table class="table-striped table-bordered" ng-repeat="user in users | orderBy: 'name'" ng-if="user.checked || !hide_unselected">
+        <tr>
+          <td class="select-box" rowspan="2">
+            <input type="checkbox" ng-click="totalUsersSelected(user)" />
+          </td>
+          <td>{{user.name}}</td>
+        </tr>
+        <tr>
+          <td>{{user.email}}</td>
+        </tr>
+      </table>
+      <button ng-click="takeSelected()" class="confirm-btn">Confirm</button>
+    </div>
+  </body>
+</html>
