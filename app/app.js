@@ -1,6 +1,7 @@
 var app = angular.module("UsersApp", []);
 
 app.controller("UsersCtrl", function($scope, $http) {
+    $scope.confirm_Active= true;
     $scope.hide_unselected=false;
     
   $http.get('https://jsonplaceholder.typicode.com/users').
@@ -10,17 +11,10 @@ app.controller("UsersCtrl", function($scope, $http) {
        //console.log( $scope.users);
     });
 
-    $scope.takeSelected=function (){
+    $scope.showSelected=function (){
+
         $scope.hide_unselected=true;
-        var selected = [];
-        for( var i = 0; i < $scope.users.length; i++)
-        {
-            if($scope.users[i].checked)
-            {
-                selected.push($scope.users[i]);
-            }
-        }
-        console.log(selected);
+    
     };
 
     $scope.totalUsersSelected= function (user){
@@ -37,6 +31,7 @@ app.controller("UsersCtrl", function($scope, $http) {
                 total++;
             }
         }
+         $scope.confirm_Active= false;
         $scope.total_items = total;
     }
 });

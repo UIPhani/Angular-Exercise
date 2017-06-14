@@ -54,7 +54,7 @@
           <td>{{user.email}}</td>
         </tr>
       </table>
-      <button ng-click="takeSelected()" class="confirm-btn">Confirm</button>
+      <button ng-disabled="confirm_Active" ng-click="showSelected()" class="confirm-btn">Confirm</button>
     </div>
   </body>
 </html>
